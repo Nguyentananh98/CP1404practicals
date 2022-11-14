@@ -14,6 +14,7 @@ def main():
     score = float(input("Enter score: "))
     define_result(score)
 
+
 def define_result(score):
     """define the result of the input score"""
     if (score < LOWER_LIMIT) and (score > UPPER_LIMIT):
