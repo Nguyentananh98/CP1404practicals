@@ -6,7 +6,6 @@ Practical_2
 
 MINIMUM_LENGTH = 8
 
-
 def main():
     password = get_password()
     display_asterisk(password)
@@ -28,3 +27,4 @@ def get_password():
 
 
 main()
+

@@ -21,11 +21,13 @@ Q - Quit"""
         choice = input(">>> ").upper()
     print("Thank you.")
 
+
 def convert_celsius():
     """convert farenheit to celsius"""
     fahrenheit = float(input("Farenheit: "))
     celsius = 5 / 9 * (fahrenheit - 32)
     print(f'Result: {celsius:.2f} C')
+
 
 def convert_farenheit():
     """convert celsius to farenheit"""
