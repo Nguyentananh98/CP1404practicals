@@ -3,7 +3,6 @@ CP 1404 - Practical 2
 NGUYEN TAN ANH - JC950881
 """
 
-from score import define_result
 
 UPPER_LEVEL = 90
 MIDDLE_LEVEL = 50
@@ -26,6 +25,7 @@ def main():
         if choice == "G":
             score = get_valid_score()
         elif choice == "P":
+            from score import define_result
             define_result(score)
         elif choice == "S":
             display_asterisk(score)

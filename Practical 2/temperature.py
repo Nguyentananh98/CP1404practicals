@@ -35,5 +35,16 @@ def convert_farenheit():
     fahrenheit = celsius * 9.0 / 5 + 32
     print(f"Result: {fahrenheit:.2f} F")
 
+def define_result(score):
+    """define the result of the input score"""
+    if (score < LOWER_LIMIT) and (score > UPPER_LIMIT):
+        print("Invalid score")
+    elif score >= UPPER_LEVEL:
+        print("Excellent")
+    elif score >= MIDDLE_LEVEL:
+        print("Passable")
+    else:
+        print("Bad")
+
 
 main()
