@@ -1,6 +1,6 @@
 """
-CP1404/CP5632 - Practical
-Broken program to determine score status
+CP1404/CP5632 - Practical 2
+Refactor the broken_score in practical 1
 """
 
 # Fix this!
