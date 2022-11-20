@@ -3,11 +3,11 @@ CP 1404 - Practical 2
 NGUYEN TAN ANH - JC950881
 """
 
-
 UPPER_LEVEL = 90
 MIDDLE_LEVEL = 50
 UPPER_LIMIT = 100
 LOWER_LIMIT = 0
+
 MENU = """
 MENU
 (G)et a valid score
@@ -18,6 +18,7 @@ MENU
 
 
 def main():
+    """display menu and ask user for choice, then do the task of that choice"""
     score = get_valid_score()
     print(MENU)
     choice = input("Your choice: ").upper()
@@ -25,8 +26,8 @@ def main():
         if choice == "G":
             score = get_valid_score()
         elif choice == "P":
-            from score import define_result
-            define_result(score)
+            result = define_result(score)
+            print(f'Your score is {result}')
         elif choice == "S":
             display_asterisk(score)
         else:
@@ -49,6 +50,18 @@ def display_asterisk(score):
     for i in range(int(score)):
         print('*', end='')
     print()
+
+
+def define_result(score):
+    """define the result of the input score"""
+    if (score < LOWER_LIMIT) or (score > UPPER_LIMIT):
+        return "Invalid score"
+    elif score >= UPPER_LEVEL:
+        return "Excellent"
+    elif score >= MIDDLE_LEVEL:
+        return "Passable"
+    else:
+        return "Bad"
 
 
 main()
