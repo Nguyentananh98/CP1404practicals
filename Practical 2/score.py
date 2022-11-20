@@ -1,6 +1,30 @@
 """
 CP1404/CP5632 - Practical 2
 Refactor the broken_score in practical 1
+
+pseudocode
+
+function main()
+    get score
+    result = define_result(score)
+    display result
+    generate random float from 0 to 100
+    random_result = define_result(random_score)
+    display random_result
+
+
+function define_result(score)
+    if score < 0 or score > 100
+        return "Invalid score"
+    else if score >= 90
+        return "Excellent"
+    else if score >= 50
+        return "Passable"
+    else
+        return "Bad"
+
+
+main()
 """
 import random
 
