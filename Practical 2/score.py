@@ -25,6 +25,8 @@ function define_result(score)
 
 
 main()
+
+code
 """
 import random
 

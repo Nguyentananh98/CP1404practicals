@@ -49,6 +49,7 @@ function define_result(score)
 
 main()
 
+code
 """
 
 UPPER_LEVEL = 90

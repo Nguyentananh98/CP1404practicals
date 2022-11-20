@@ -30,6 +30,8 @@ function convert_farenheit()
 
 
 main()
+
+code
 """
 
 MENU = """C - Convert Celsius to Fahrenheit
