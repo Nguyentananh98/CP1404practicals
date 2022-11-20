@@ -1,6 +1,35 @@
 """
 CP1404/CP5632 - Practical
 Pseudocode for temperature conversion
+
+function main()
+    display menu
+    get choice in uppercase
+    while choice != "Q"
+        if choice == "C"
+            convert_farenheit()
+        else if choice == "F"
+            convert_celsius()
+        else
+            print("Invalid option")
+        display menu
+        get choice in uppercase
+    display thank message
+
+
+function convert_celsius()
+    get farenheit
+    celsius = 5 / 9 * (fahrenheit - 32)
+    display celcius in 2 float number
+
+
+function convert_farenheit()
+    get celcius
+    fahrenheit = celsius * 9.0 / 5 + 32
+    display celcius in 2 float number
+
+
+main()
 """
 
 MENU = """C - Convert Celsius to Fahrenheit
