@@ -4,7 +4,7 @@ NGUYEN TAN ANH
 JC950881
 """
 
-question 1
+# question 1
 
 OUTPUT_FILE = 'name.txt'
 
@@ -44,5 +44,3 @@ for line in in_file:
     line_sum += int(line)
 
 print(f'Total of the file numbers is: {line_sum}')
-
-
