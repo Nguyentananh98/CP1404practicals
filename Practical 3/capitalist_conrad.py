@@ -41,5 +41,3 @@ while MIN_PRICE <= price <= MAX_PRICE:
 
 
 out_file.close()
-
-
