@@ -7,18 +7,18 @@ FILENAME = "subject_data.txt"
 
 
 def main():
-    data = get_data(FILENAME)
-    print(data)
-    for class_data in data:
+    input_data = get_data(FILENAME)
+    print(input_data)
+    for class_data in input_data:
         print(f'{class_data[0]} is taught by {class_data[1]} and has {class_data[2]} students')
+    input_data = processing_data(input_data)
 
 
 def get_data(filename):
     """Read data from file formatted like: subject,lecturer,number of students."""
     input_file = open(filename)
-    input_data = processing_data(input_file)
     input_file.close()
-    return input_data
+    return input_file
 
 
 def processing_data(input_file):
