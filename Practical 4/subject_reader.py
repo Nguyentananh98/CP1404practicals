@@ -36,6 +36,3 @@ def processing_data(input_file):
 
 
 main()
-
-
-

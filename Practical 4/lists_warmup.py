@@ -17,4 +17,3 @@ print(numbers[2:])
 
 # 4.
 print(9 in numbers)
-
