@@ -25,4 +25,13 @@ print(CODE_TO_NAME)
 # for code in CODE_TO_NAME.keys():
 #     print(f'{code:{max_code}} is {CODE_TO_NAME[code]:{max_name}}')
 
+# using EAFP approach
+state_code = input("Enter short state: ").upper()
+
+while state_code != "":
+    try:
+        print(state_code, "is", CODE_TO_NAME[state_code])
+    except KeyError:
+        print("Invalid short state")
+    state_code = input("Enter short state: ").upper()
 
