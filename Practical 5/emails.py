@@ -5,6 +5,7 @@ NGUYEN TAN ANH - JC950881
 
 
 def generate_fullname(email):
+    """generate full name from the email"""
     name = email.split('@')[0]
     name_words = name.split('.')
     name_words = [word.title() for word in name_words]
@@ -16,6 +17,8 @@ def generate_fullname(email):
 
 
 def main():
+    """getting the name of the user from the entering email and store it, then display
+    it all"""
     email = input("Email: ")
     user_datas = {}
     while email != "":
