@@ -17,3 +17,4 @@ while input_color != "":
     except KeyError:
         print('Invalid color name: ')
     input_color = input('Please insert color name: ').title()
+
