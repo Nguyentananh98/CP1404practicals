@@ -20,3 +20,4 @@ for i in range(len(data)):
     data[i] = tuple(data[i])
 
 print(data)
+
