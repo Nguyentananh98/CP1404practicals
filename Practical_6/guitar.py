@@ -7,6 +7,12 @@ VINTAGE_CUTOFF = 50
 
 class Guitar:
     def __init__(self, name="", year=0, cost=0):
+        """
+        Initiate the variable for the guitar object
+        :param name: string of the name
+        :param year: int, year of creation
+        :param cost: float, price of the guitar
+        """
         self.name = name
         self.year = year
         self.cost = cost
@@ -27,4 +33,5 @@ class Guitar:
             return False
 
     def __lt__(self, other):
+        """return the attribute to be compare when sort"""
         return self.year < other.year
