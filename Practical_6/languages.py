@@ -1,6 +1,9 @@
 """
 Practical 06
 NGUYEN TAN ANH
+
+estimate time: 20
+completion time: 30
 """
 
 from Practical_6.programming_language import ProgrammingLanguage

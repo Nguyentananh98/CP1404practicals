@@ -1,6 +1,9 @@
 """
 Practical 6
 NGUYEN TAN ANH
+
+estimate time: 10
+completion time: 8
 """
 
 

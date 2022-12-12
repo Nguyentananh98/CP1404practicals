@@ -2,6 +2,10 @@
 Programming 2
 Practical 6
 NGUYEN TAN ANH
+
+
+estimate time: 5
+completion time: 5
 """
 
 from Practical_6.guitar import Guitar
