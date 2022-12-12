@@ -2,8 +2,9 @@
 Practical 06
 NGUYEN TAN ANH
 """
+CURRENT_YEAR = 2022
 
-class GuitarType:
+class Guitar:
     def __init__(self, name="", year=0, cost=0):
         self.name = name
         self.year = year
@@ -13,8 +14,7 @@ class GuitarType:
         return f'{self.name} ({self.year}) : ${self.cost}'
 
     def get_age(self):
-        current_year = 2022
-        return current_year - self.year
+        return CURRENT_YEAR - self.year
 
     def is_vintage(self):
         if self.get_age() >= 50:
