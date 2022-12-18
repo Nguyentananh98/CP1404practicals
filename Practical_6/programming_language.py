@@ -11,10 +11,10 @@ class ProgrammingLanguage:
     def __init__(self, name="", typing="", reflection=bool, year=""):
         """
         Initiate the params for the programming language objects
-        :param name:
-        :param typing:
-        :param reflection:
-        :param year:
+        :param name: name of the programming language, type: string
+        :param typing: type of programming language, type: string
+        :param reflection: reflection of programming language: type bool
+        :param year: year created programming language: type: int
         """
         self.name = name
         self.typing = typing

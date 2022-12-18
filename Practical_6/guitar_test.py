@@ -10,6 +10,7 @@ completion time: 5
 
 from Practical_6.guitar import Guitar
 
+
 def main():
     """test the guitar class"""
     gibson = Guitar('Gibson L-5 CES', 1922, 16035.40)

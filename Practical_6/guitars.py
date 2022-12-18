@@ -26,8 +26,6 @@ def main():
 
         print('My guitars!')
         name = input('Name: ')
-        year = int(input('Year: '))
-        cost = float(input('Cost: '))
 
     print('Name: ')
     print()
