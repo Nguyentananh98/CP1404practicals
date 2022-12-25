@@ -3,15 +3,12 @@ time estimate: 1 hours
 start time: 4:23 pm
 end time: 6 am morning
 """
-import csv
-import datetime
 from project import ProjectManagement
 
 
 def main():
-    data = []
-    print("""
-    - (L)oad projects  
+    """the project management for storing, updating the project information"""
+    print("""- (L)oad projects  
 - (S)ave projects  
 - (D)isplay projects  
 - (F)ilter projects by date
@@ -20,7 +17,7 @@ def main():
 - (Q)uit""")
     data = load_file('projects.txt')
     projects = add_object(data)
-    choice = input('>>>').upper()
+    choice = input('>>> ').upper()
     while choice != 'Q':
         if choice == 'L':
             filename = input('Filename: ')
@@ -33,43 +30,82 @@ def main():
         elif choice == "D":
             complete_project, incomplete_project = group_completeproject(projects)
             print('Incomplete projects: ')
-            display_project(incomplete_project)
-            print('Completed projects')
-            display_project(complete_project)
+            incomplete_project.sort()
+            display_project(incomplete_project, False)
+            print('Completed projects: ')
+            complete_project.sort()
+            display_project(complete_project, False)
         elif choice == 'F':
-            date_string = input('Show projects that start after date (dd/mm/yy): ')
-            date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-            filtered_project = []
+            date = input('Show projects that start after date (dd/mm/yy): ')
+            filtered_projects = []
             for project in projects:
                 if project.compare_date(date):
-                    filtered_project.append(project)
-            display_project(projects)
+                    filtered_projects.append(project)
+            filtered_projects = sort_projects(filtered_projects)
+            display_project(filtered_projects, False)
         elif choice == "A":
             print('Lets add a new project')
-            name = input('Name:')
+            name = input('Name: ')
             start_date = input('Start date (dd/mm/yy): ')
-            priority = int(input('Priority:'))
-            cost_estimate = input('Cost estimate:')
-            cost_estimate.replace('$', '')
+            priority = int(input('Priority: '))
+            cost_estimate = input('Cost estimate: ')
+            cost_estimate = cost_estimate.replace('$', '')
             cost_estimate = int(cost_estimate)
             percent_complete = input('Percent complete: ')
-            project = ProjectManagement(name, start_date, priority, cost_estimate, percent_complete)
+            project = ProjectManagement(str(name), str(start_date), int(priority), int(cost_estimate),
+                                        int(percent_complete))
             projects.append(project)
         elif choice == 'U':
-            display_project(projects)
-            project_data = {}
-            for number, object in enumerate(projects):
-                project_data[number] = object
+            projects = sort_projects(projects)
+            display_project(projects, True)
+            projects_data = {}
+            for number, project in enumerate(projects):
+                projects_data[str(number)] = project
             project_choice = input('Project choice: ')
-            print(project_data[project_choice])
-            new_percentage = int(input('New Percentage: '))
-            new_priority = int(input('New Priority: '))
+            chosen_project = projects_data[project_choice]
+            print(chosen_project)
+            new_percentage = input('New Percentage: ')
+            new_priority = input('New Priority: ')
+            if new_percentage != '':
+                chosen_project.update_percentage(int(new_percentage))
+            if new_priority != '':
+                chosen_project.update_priority(int(new_priority))
+        print("""- (L)oad projects  
+- (S)ave projects  
+- (D)isplay projects  
+- (F)ilter projects by date
+- (A)dd new project  
+- (U)pdate project
+- (Q)uit""")
+        choice = input('>>> ').upper()
+    print('Thank you for using custom-built project management software.')
 
 
-
-def display_project(projects):
+def sort_projects(projects):
+    """sort the project by date for display"""
+    date_list = []
     for project in projects:
-        print(project)
+        if project.start_date not in date_list:
+            date_list.append(project.start_date)
+    date_list.sort()
+    sorted_project = []
+    for date in date_list:
+        for number, project in enumerate(projects):
+            if project.start_date == date:
+                sorted_project.append(project)
+    return sorted_project
+
+
+def display_project(projects, order):
+    """display the project:
+    order: True display the project with index number
+    order: False display the project without index number"""
+    if order:
+        for num, project in enumerate(projects):
+            print(f'{num} {project}')
+    else:
+        for project in projects:
+            print(project)
 
 
 def group_completeproject(projects):
@@ -88,9 +124,16 @@ def group_completeproject(projects):
 
 def load_file(filename):
     """load the file data to a list of row"""
+    projects = []
     in_file = open(filename, 'r')
     data = in_file.readlines()
-    projects = csv.reader(data)
+    for line in data[1:]:
+        slash_position = line.find('/')
+        project_name = line[:slash_position - 3]
+        project_detail = line[slash_position - 2:]
+        project_detail = project_detail.split()
+        project_data = [project_name] + project_detail
+        projects.append(project_data)
     return projects
 
 
@@ -104,13 +147,12 @@ def save_file(data, filename):
 
 
 def add_object(data):
+    """convert the input data list to a list of project objects"""
     projects = []
-    for number, line in enumerate(data):
-        project = ProjectManagement(number, line[0], line[1], line[2], line[3], line[4])
+    for line in data:
+        project = ProjectManagement(line[0], line[1], line[2], line[3], line[4])
         projects.append(project)
     return projects
 
 
-
-
-
+main()

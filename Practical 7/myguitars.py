@@ -14,7 +14,7 @@ def main():
     for line in content:
         line = line.strip().split(',')
         guitar = Guitar(line[0], line[1], line[2])
-        guitar = guitars.append(guitar)
+        guitars.append(guitar)
 
     guitars.sort()
 
@@ -23,4 +23,3 @@ def main():
 
 
 main()
-
