@@ -1,6 +1,8 @@
 """
 Practical 7
 NGUYEN TAN ANH - JC950881
+estimate time: 6 hours
+complete time: 4 hours
 """
 import datetime
 

@@ -22,11 +22,18 @@ def main():
         if choice == 'L':
             filename = input('Filename: ')
             if filename != '':
-                data = load_file(filename)
-                projects = add_object(data)
+                try:
+                    data = load_file(filename)
+                    projects = add_object(data)
+                except FileNotFoundError:
+                    print('Invalid Filename')
         elif choice == 'S':
-            save_filename = input('Please enter the saved file')
-            save_file(data, save_filename)
+            save_filename = input('Please enter the saved file: ')
+            if save_filename != '':
+                try:
+                    save_file(data, save_filename)
+                except FileNotFoundError:
+                    print('Invalid Filename')
         elif choice == "D":
             complete_project, incomplete_project = group_completeproject(projects)
             print('Incomplete projects: ')
@@ -45,31 +52,39 @@ def main():
             display_project(filtered_projects, False)
         elif choice == "A":
             print('Lets add a new project')
-            name = input('Name: ')
-            start_date = input('Start date (dd/mm/yy): ')
-            priority = int(input('Priority: '))
-            cost_estimate = input('Cost estimate: ')
-            cost_estimate = cost_estimate.replace('$', '')
-            cost_estimate = int(cost_estimate)
-            percent_complete = input('Percent complete: ')
-            project = ProjectManagement(str(name), str(start_date), int(priority), int(cost_estimate),
-                                        int(percent_complete))
-            projects.append(project)
+            try:
+                name = input('Name: ')
+                start_date = input('Start date (dd/mm/yy): ')
+                priority = int(input('Priority: '))
+                cost_estimate = input('Cost estimate: ')
+                cost_estimate = cost_estimate.replace('$', '')
+                cost_estimate = int(cost_estimate)
+                percent_complete = input('Percent complete: ')
+                project = ProjectManagement(str(name), str(start_date), int(priority), int(cost_estimate),
+                                            int(percent_complete))
+                projects.append(project)
+            except ValueError:
+                print('Invalid Input')
         elif choice == 'U':
             projects = sort_projects(projects)
             display_project(projects, True)
             projects_data = {}
             for number, project in enumerate(projects):
                 projects_data[str(number)] = project
-            project_choice = input('Project choice: ')
-            chosen_project = projects_data[project_choice]
-            print(chosen_project)
-            new_percentage = input('New Percentage: ')
-            new_priority = input('New Priority: ')
-            if new_percentage != '':
-                chosen_project.update_percentage(int(new_percentage))
-            if new_priority != '':
-                chosen_project.update_priority(int(new_priority))
+            try:
+                project_choice = input('Project choice: ')
+                chosen_project = projects_data[project_choice]
+                print(chosen_project)
+                new_percentage = input('New Percentage: ')
+                new_priority = input('New Priority: ')
+                if new_percentage != '':
+                    chosen_project.update_percentage(int(new_percentage))
+                if new_priority != '':
+                    chosen_project.update_priority(int(new_priority))
+            except KeyError:
+                print('Invalid Choice')
+        else:
+            print('Invalid choice!')
         print("""- (L)oad projects  
 - (S)ave projects  
 - (D)isplay projects  
@@ -139,11 +154,12 @@ def load_file(filename):
 
 def save_file(data, filename):
     """save the data to the file as csv mode"""
-    out_file = open(filename, 'r')
+    out_file = open(filename, 'w')
     print('Name	Start Date Priority	Cost Estimate	Completion Percentage', file=out_file)
     for line in data:
         line = ','.join(line)
         print(line, file=out_file)
+    out_file.close()
 
 
 def add_object(data):
