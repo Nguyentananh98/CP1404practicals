@@ -7,6 +7,7 @@ NEW_COLOUR = (1, 0, 0, 1)
 
 class DynamicWidget(App):
     def __init__(self, **kwargs):
+        """initiate the App object"""
         super().__init__(**kwargs)
         self.names = ["Bob Brown", "Cat Cyan", "Oren Ochre"]
 

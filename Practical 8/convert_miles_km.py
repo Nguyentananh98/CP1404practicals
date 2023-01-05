@@ -21,16 +21,19 @@ class ConvertMilesToKmApp(App):
         return self.root
 
     def handle_convert(self):
+        """convert from miles to kilometre"""
         mile_value = self.check_mile_input()
         kilometre_value = mile_value * MILES_TO_KILOMETRE
         self.root.ids.output_label.text = str(kilometre_value)
 
     def handle_increment(self, value):
+        """add the value to mile input"""
         input_value = self.check_mile_input()
         input_value += value
         self.root.ids.text_input.text = str(input_value)
 
     def check_mile_input(self):
+        """check for valid input value"""
         try:
             input_value = float(self.root.ids.text_input.text)
         except ValueError:
@@ -39,3 +42,6 @@ class ConvertMilesToKmApp(App):
 
 
 ConvertMilesToKmApp().run()
+
+
+
