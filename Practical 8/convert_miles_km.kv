@@ -1,0 +1,25 @@
+BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        TextInput:
+            id: text_input
+            text: ''
+            on_text: app.handle_convert()
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Up'
+                id: up_button
+                on_press: app.handle_increment(1)
+            Button:
+                text: 'Down'
+                id: down_button
+                on_press: app.handle_increment(-1)
+#    Button:
+#        text: app.message
+#        on_press: app.handle_convert(text_input.text)
+    Label:
+        text: ''
+        id: output_label
+        color: (255, 252, 127, 1)
