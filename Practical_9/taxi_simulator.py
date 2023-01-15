@@ -3,7 +3,7 @@ CP1404 -NGUYEN TAN ANH
 JC950881
 PRACTICAL 9
 """
-from Practical_9.SilverServiceTaxi import SilverServiceTaxi
+from Practical_9.silver_service_taxi import SilverServiceTaxi
 from Practical_9.taxi import Taxi
 
 TAXIS = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
